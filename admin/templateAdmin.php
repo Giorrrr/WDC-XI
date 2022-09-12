@@ -25,7 +25,7 @@ if(!isset($_SESSION['email'])  && $_SESSION['status'] != "login") {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-  <title>Dashboard</title>
+  <title></title>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg bg-light">
@@ -58,7 +58,26 @@ if(!isset($_SESSION['email'])  && $_SESSION['status'] != "login") {
   </div>
 </nav>
 
-
+<div class="container">
+  <h3 class="mt-2"></h3>
+  <hr />
+  <a href="" class="btn btn-primary mb-3"><i class="bi bi-plus fw-bolder fs-5 me-1"></i>Tambah Data</a>
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <td>
+        <a href="?id=<?= $result["id"]; ?>" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
+        <a href="?id=<?= $result["id"]; ?>" class="btn btn-danger"><i class="bi bi-trash"></i></a>
+      </td>
+    </tbody>
+  </table>  
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 </body>
