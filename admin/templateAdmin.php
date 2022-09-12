@@ -6,7 +6,7 @@ if(!isset($_SESSION['email'])  && $_SESSION['status'] != "login") {
     echo "
         <script>
             alert('Kamu Belum login!');
-            window.location.replace('login.php');
+            window.location.replace('../auth/login.php');
         </script>
     ";
 } else {
