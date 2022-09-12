@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if(checkEmail($inputEmail, $connection) != 0) {
         // $sql = "SELECT * FROM siswa WHERE email = '$inputEmail'";
-        $sql = "SELECT * FROM siswa WHERE email ='$inputEmail' AND password ='$inputPwdHash'";
+        $sql = "SELECT * FROM admin WHERE email ='$inputEmail' AND password ='$inputPwdHash'";
         $dataSiswa = mysqli_query($connection, $sql);
         $cek = mysqli_num_rows($dataSiswa);
         if ($cek > 0) {
@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 function checkEmail($inputEmail, $connection){
     $emailDB = mysqli_real_escape_string($connection, $inputEmail);
-    $query = "SELECT * FROM siswa WHERE email = '$emailDB' ";
+    $query = "SELECT * FROM admin WHERE email = '$emailDB' ";
     if( $result = mysqli_query($connection, $query) ) return mysqli_num_rows($result);
 }
 

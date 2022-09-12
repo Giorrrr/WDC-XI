@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 if(checkUser($user, $connection) == 0) {
                     $hashpass = md5($pwd);
 
-                    $insertQuery = "INSERT INTO siswa(nama, email, username, password, status) VALUES ('$nama', '$email', '$user', '$hashpass', '1')";
+                    $insertQuery = "INSERT INTO admin(nama, email, username, password, status) VALUES ('$nama', '$email', '$user', '$hashpass', '1')";
                     $result = mysqli_query($connection, $insertQuery);
 
                     echo "
@@ -78,13 +78,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 function checkEmail($email, $connection){
     $emailDB = mysqli_real_escape_string($connection, $email);
-    $query = "SELECT * FROM siswa WHERE email = '$emailDB' ";
+    $query = "SELECT * FROM admin WHERE email = '$emailDB' ";
     if( $result = mysqli_query($connection, $query) ) return mysqli_num_rows($result);
 }
 
 function checkUser($user,$connection){
     $userDB = mysqli_real_escape_string($connection, $user);
-    $query = "SELECT * FROM siswa WHERE username = '$userDB' ";
+    $query = "SELECT * FROM admin WHERE username = '$userDB' ";
     if( $result = mysqli_query($connection, $query) ) return mysqli_num_rows($result);
 }
 

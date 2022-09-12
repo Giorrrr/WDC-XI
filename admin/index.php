@@ -11,7 +11,7 @@ if(!isset($_SESSION['email'])  && $_SESSION['status'] != "login") {
     ";
 } else {
     $emailUser = $_SESSION['email'];
-    $sql = "SELECT * FROM siswa WHERE email = '$emailUser' ";
+    $sql = "SELECT * FROM admin WHERE email = '$emailUser' ";
     $query = mysqli_query($connection, $sql);
     $user  = mysqli_fetch_assoc($query);
 }
@@ -52,7 +52,9 @@ if(!isset($_SESSION['email'])  && $_SESSION['status'] != "login") {
           </ul>
         </li>
       </ul>
+      <a href="../auth/logout.php" class="btn btn-primary d-block d-lg-none">Logout</a>
     </div>
+    <a href="../auth/logout.php" class="btn btn-primary d-none d-lg-block">Logout</a>
   </div>
 </nav>
 
