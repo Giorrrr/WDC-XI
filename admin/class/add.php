@@ -1,16 +1,29 @@
 <?php
+
+use function PHPSTORM_META\map;
+
 include "../../src/connection.php";
 
+$error = '';
 if(isset($_POST['submit'])) {
-    $class = $_POST["class"];
-    $sql   = "INSERT INTO class VALUES ('', '$class')";
-    $query = mysqli_query($connection, $sql);
-    echo "
-        <script>
-            alert('Data added successfully!');
-            window.location.replace('../class.php');
-        </script>
-    ";
+    $class = strtoupper($_POST["class"]);
+    if(checkKelas($connection, $class) == 0)  {
+      $sql   = "INSERT INTO class VALUES ('', '$class')";
+      $query = mysqli_query($connection, $sql);
+      echo "
+          <script>
+              alert('Data added successfully!');
+              window.location.replace('../class.php');
+          </script>
+      ";
+    } else {
+      $error = 'Registered Class Name';
+    }
+}
+
+function checkKelas($connection, $class) {
+  $sql = "SELECT * FROM class WHERE kelas = '$class' ";
+  if( $result = mysqli_query($connection, $sql) ) return mysqli_num_rows($result);
 }
 ?>
 
@@ -34,6 +47,11 @@ if(isset($_POST['submit'])) {
     <div class="form-group mb-2">
       <label for="" class="form-label">Class Name</label>
       <input type="text" class="form-control" name="class" placeholder="Class Name">
+      <?php if($error != '') : ?>
+        <div class="alert alert-danger mt-2" role="alert">
+          <?= $error; ?>
+        </div>
+      <?php endif ?>
     </div>
     <div class="d-grid gap-2">
       <button class="btn btn-primary" type="submit" name="submit">Submit</button>
