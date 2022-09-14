@@ -1,23 +1,8 @@
 <?php 
 include "../../src/connection.php";
 
-$_SESSION['status'] = '';
-if(!isset($_SESSION['email'])  && $_SESSION['status'] != "login") {
-    echo "
-        <script>
-            alert('Kamu Belum login!');
-            window.location.replace('../../auth/login.php');
-        </script>
-    ";
-} else {
-    $emailUser = $_SESSION['email'];
-    $sql = "SELECT * FROM admin WHERE email = '$emailUser' ";
-    $query = mysqli_query($connection, $sql);
-    $user  = mysqli_fetch_assoc($query);
-}
-
-$id = $_GET["id"];
-$sql = "SELECT * FROM class WHERE id = '$id' ";
+$id    = $_GET["id"];
+$sql   = "SELECT * FROM class WHERE id = '$id' ";
 $query = mysqli_query($connection, $sql);
 $data  = mysqli_fetch_array($query);
 ?>
@@ -34,7 +19,7 @@ $data  = mysqli_fetch_array($query);
 </head>
 <body>
 <div class="container">
-  <h3 class="mt-2">Edit Page</h3>
+  <h3 class="mt-2">Edit Class</h3>
   <hr />
   <a href="../class.php" class="btn btn-primary mb-3"><i class="bi bi-arrow-bar-left me-2"></i>Back to page</a>
   <form method="post" action="">
@@ -55,7 +40,7 @@ $data  = mysqli_fetch_array($query);
 <?php
 if(isset($_POST['submit'])) {
   $class = $_POST["class"];
-  $update = mysqli_query($connection, "UPDATE class SET class = '$class' WHERE id = '$id' ");
+  $update = mysqli_query($connection, "UPDATE class SET kelas = '$class' WHERE id = '$id' ");
   echo "
     <script>
       alert('Data changed successfully!');

@@ -71,10 +71,12 @@ if(!isset($_SESSION['email'])  && $_SESSION['status'] != "login") {
       </tr>
     </thead>
     <tbody>
-      <td>
-        <a href="?id=<?= $result["id"]; ?>" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
-        <a href="?id=<?= $result["id"]; ?>" class="btn btn-danger"><i class="bi bi-trash"></i></a>
-      </td>
+      <tr>
+        <td>
+          <a href="?id=<?= $result["id"]; ?>" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
+          <a href="?id=<?= $result["id"]; ?>" class="btn btn-danger"><i class="bi bi-trash"></i></a>
+        </td>
+      </tr>
     </tbody>
   </table>  
 </div>

@@ -78,7 +78,7 @@ $number = 1;
       <?php while($result = mysqli_fetch_array($query)) : ?>
       <tr>
         <th scope="row"><?= $number ?></th>
-        <td><?= $result["class"] ?></td>
+        <td><?= $result["kelas"] ?></td>
         <td>
           <a href="class/edit.php?id=<?= $result["id"]; ?>" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
           <a href="class/delete.php?id=<?= $result["id"]; ?>" class="btn btn-danger"><i class="bi bi-trash"></i></a>
